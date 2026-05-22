@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capítulo 1 · Activos Digitales · Instructivo paso a paso</title>
+<meta name="description" content="Instructivo educativo - Capítulo 1 Activos Digitales - Mercadeo y Generación de Valor - Grupo 15">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg-deep: #050d1f;
+  --bg-card: rgba(15, 25, 50, 0.7);
+  --bg-step: rgba(8, 16, 35, 0.85);
+  --cyan: #00d4ff;
+  --purple: #7b2fff;
+  --orange: #ff8c00;
+  --green: #00ff88;
+  --pink: #ff3d8a;
+  --yellow: #ffd700;
+  --text: #e8f1ff;
+  --text-dim: #8a9bb8;
+  --text-soft: #c4d2e8;
+  --border: rgba(0, 212, 255, 0.2);
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg-deep);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.6;
+}
+.particles {
+  position: fixed; inset: 0; z-index: 0;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(0,212,255,0.15) 0%, transparent 40%),
+    radial-gradient(circle at 85% 60%, rgba(123,47,255,0.18) 0%, transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(255,140,0,0.12) 0%, transparent 40%);
+  pointer-events: none;
+}
+.grid-overlay {
+  position: fixed; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+.content { position: relative; z-index: 1; }
+
+/* Sticky nav */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(5, 13, 31, 0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 20px;
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.nav-brand {
+  font-weight: 800;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-brand .logo {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.nav-links {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.nav-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+.nav-links a:hover {
+  color: var(--cyan);
+  background: rgba(0,212,255,0.08);
+}
+
+/* Header */
+header {
+  padding: 60px 24px 30px;
+  text-align: center;
+}
+.badge {
+  display: inline-block;
+  padding: 8px 18px;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid var(--cyan);
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 20px;
+  animation: pulse 2.5s infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0,212,255,0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(0,212,255,0); }
+}
+h1 {
+  font-size: clamp(2rem, 6vw, 4.2rem);
+  font-weight: 900;
+  line-height: 1.05;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #fff 0%, var(--cyan) 50%, var(--purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+}
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--text-soft);
+  max-width: 760px;
+  margin: 0 auto 24px;
+  font-weight: 500;
+}
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+}
+.meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  font-size: 13px;
+  backdrop-filter: blur(10px);
+}
+.meta-chip .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 10px var(--green);
+}
+
+/* Welcome panel */
+.welcome {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 24px;
+}
+.welcome-card {
+  background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(123,47,255,0.08));
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(20px);
+}
+.welcome-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  color: var(--cyan);
+}
+.welcome-card p {
+  color: var(--text-soft);
+  margin-bottom: 12px;
+}
+.welcome-card .check-row {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-size: 14px;
+}
+.welcome-card .check-row:first-of-type { border-top: none; padding-top: 16px; }
+.check-icon {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: rgba(0,255,136,0.15);
+  border: 1px solid var(--green);
+  color: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+/* Progress hero */
+.progress-hero {
+  max-width: 1200px;
+  margin: 30px auto 30px;
+  padding: 0 24px;
+}
+.progress-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  justify-content: space-between;
+}
+.progress-left h2 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+.progress-left p { color: var(--text-dim); font-size: 14px; }
+.progress-ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+.progress-ring svg { transform: rotate(-90deg); }
+.progress-ring circle { fill: none; stroke-width: 10; }
+.progress-ring .bg { stroke: rgba(255,255,255,0.08); }
+.progress-ring .fg {
+  stroke: url(#gradPie);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s ease;
+}
+.progress-ring .label {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  font-weight: 800;
+}
+.progress-ring .label .num {
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.progress-ring .label .txt {
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Section headers */
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-title::before {
+  content: '';
+  width: 6px;
+  height: 32px;
+  background: linear-gradient(180deg, var(--cyan), var(--purple));
+  border-radius: 4px;
+}
+.section-sub { color: var(--text-dim); margin-bottom: 30px; font-size: 15px; }
+
+/* Tasks */
+.tasks-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+}
+.task-block {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  margin-bottom: 32px;
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  position: relative;
+}
+.task-block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--accent, var(--cyan));
+}
+.task-block.done {
+  border-color: var(--green);
+}
+.task-block.done::before { background: var(--green); }
+
+.task-header {
+  padding: 30px 30px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.task-icon-big {
+  flex-shrink: 0;
+  width: 70px; height: 70px;
+  border-radius: 18px;
+  background: rgba(0,212,255,0.1);
+  border: 2px solid var(--accent, var(--cyan));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.2rem;
+}
+.task-head-info { flex: 1; min-width: 240px; }
+.task-num-pill {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--accent, var(--cyan));
+  background: rgba(0,212,255,0.08);
+  padding: 4px 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+.task-block h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+.task-summary {
+  color: var(--text-soft);
+  font-size: 15px;
+}
+.task-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-top: 12px;
+}
+.tag {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  color: var(--text-dim);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.tag.required { background: rgba(255,61,138,0.12); color: var(--pink); }
+.tag.group { background: rgba(123,47,255,0.18); color: #b794ff; }
+.tag.individual { background: rgba(0,212,255,0.18); color: var(--cyan); }
+.tag.time { background: rgba(255,215,0,0.1); color: var(--yellow); }
+
+/* Steps */
+.steps-wrapper {
+  padding: 0 30px 30px;
+}
+.steps-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent, var(--cyan));
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.steps-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent, var(--cyan)) 0%, transparent 100%);
+}
+.step {
+  display: flex;
+  gap: 18px;
+  padding: 18px;
+  background: var(--bg-step);
+  border-radius: 14px;
+  margin-bottom: 12px;
+  border-left: 3px solid var(--accent, var(--cyan));
+  position: relative;
+}
+.step-num {
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--accent, var(--cyan));
+  color: #051a0d;
+  font-weight: 800;
+  font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+}
+.step-body { flex: 1; }
+.step-body h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+.step-body p {
+  color: var(--text-soft);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.step-body p:last-child { margin-bottom: 0; }
+.step-body ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 8px 0;
+}
+.step-body ul li {
+  color: var(--text-soft);
+  font-size: 14px;
+  padding: 4px 0 4px 22px;
+  position: relative;
+}
+.step-body ul li::before {
+  content: '▹';
+  position: absolute;
+  left: 4px;
+  color: var(--accent, var(--cyan));
+  font-weight: 700;
+}
+.tip {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: rgba(255,215,0,0.06);
+  border-left: 3px solid var(--yellow);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text-soft);
+}
+.tip strong { color: var(--yellow); }
+.warn {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: rgba(255,61,138,0.06);
+  border-left: 3px solid var(--pink);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text-soft);
+}
+.warn strong { color: var(--pink); }
+.example-box {
+  margin-top: 10px;
+  padding: 12px 14px;
+  background: rgba(0,255,136,0.05);
+  border: 1px dashed var(--green);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text-soft);
+  font-family: 'JetBrains Mono', monospace;
+}
+.example-box strong { color: var(--green); font-family: 'Inter', sans-serif; }
+code {
+  background: rgba(0,0,0,0.4);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--cyan);
+}
+
+.deliverable {
+  margin-top: 18px;
+  padding: 16px;
+  background: rgba(0,255,136,0.06);
+  border: 1px solid var(--green);
+  border-radius: 12px;
+}
+.deliverable-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 6px;
+}
+.deliverable p { color: var(--text-soft); font-size: 14px; }
+
+.complete-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px;
+  margin-top: 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  color: var(--text);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  transition: all 0.2s;
+}
+.complete-btn:hover { background: rgba(255,255,255,0.08); }
+.complete-btn .box {
+  width: 26px; height: 26px;
+  border-radius: 8px;
+  border: 2px solid var(--accent, var(--cyan));
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.complete-btn.checked .box {
+  background: var(--green);
+  border-color: var(--green);
+}
+.complete-btn.checked .box::after {
+  content: '✓';
+  color: #051a0d;
+  font-weight: 900;
+  font-size: 16px;
+}
+.complete-btn.checked {
+  background: rgba(0, 255, 136, 0.08);
+  border-color: var(--green);
+  color: var(--green);
+}
+
+/* Accent colors per task */
+.task-block[data-acc="1"] { --accent: #E1306C; }
+.task-block[data-acc="2"] { --accent: #0A66C2; }
+.task-block[data-acc="3"] { --accent: var(--purple); }
+.task-block[data-acc="4"] { --accent: #f0f6fc; }
+.task-block[data-acc="5"] { --accent: var(--orange); }
+
+/* Timeline */
+.timeline-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px 50px;
+}
+.timeline {
+  position: relative;
+  padding-left: 30px;
+  margin-top: 20px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--cyan), var(--purple), var(--orange));
+}
+.tl-item {
+  position: relative;
+  padding-bottom: 24px;
+}
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg-deep);
+  border: 3px solid var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
+}
+.tl-item.purple::before { border-color: var(--purple); box-shadow: 0 0 10px var(--purple); }
+.tl-item.orange::before { border-color: var(--orange); box-shadow: 0 0 10px var(--orange); }
+.tl-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--cyan);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.tl-item.purple .tl-date { color: var(--purple); }
+.tl-item.orange .tl-date { color: var(--orange); }
+.tl-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.tl-desc { color: var(--text-dim); font-size: 14px; }
+
+/* FAQ */
+.faq-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px 50px;
+}
+.faq-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+}
+.faq-q {
+  padding: 18px 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+.faq-q:hover { background: rgba(255,255,255,0.03); }
+.faq-q .arrow {
+  color: var(--cyan);
+  font-size: 18px;
+  transition: transform 0.3s;
+}
+.faq-item.open .arrow { transform: rotate(180deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 22px;
+  color: var(--text-soft);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.faq-item.open .faq-a {
+  max-height: 500px;
+  padding: 0 22px 18px;
+}
+
+/* CTA */
+.cta-section {
+  max-width: 1000px;
+  margin: 0 auto 50px;
+  padding: 0 24px;
+}
+.cta-box {
+  background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(123,47,255,0.1));
+  border: 1px solid var(--cyan);
+  border-radius: 24px;
+  padding: 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(0,212,255,0.3), transparent 60%);
+  pointer-events: none;
+}
+.cta-box h2 {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  position: relative;
+}
+.cta-box p {
+  color: var(--text-soft);
+  max-width: 600px;
+  margin: 0 auto 24px;
+  position: relative;
+}
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  color: #fff;
+  text-decoration: none;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 15px;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(0,212,255,0.4);
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 30px 24px;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+footer strong { color: var(--cyan); }
+
+.reset-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.reset-btn:hover { color: var(--pink); border-color: var(--pink); }
+
+@media (max-width: 700px) {
+  header { padding: 40px 16px 24px; }
+  .progress-card { flex-direction: column; text-align: center; }
+  .cta-box { padding: 28px 20px; }
+  .section-title { font-size: 1.5rem; }
+  .task-header { padding: 22px 20px 16px; }
+  .steps-wrapper { padding: 0 20px 24px; }
+  .step { padding: 14px; gap: 12px; }
+  .step-num { width: 30px; height: 30px; font-size: 14px; }
+  .nav-links { gap: 2px; }
+  .nav-links a { padding: 5px 8px; font-size: 11px; }
+}
+</style>
+</head>
+<body>
+<div class="particles"></div>
+<div class="grid-overlay"></div>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="gradPie" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="100%" stop-color="#7b2fff"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="content">
+
+  <nav class="topnav">
+    <div class="nav-inner">
+      <div class="nav-brand"><span class="logo">📚</span> Capítulo 1 · Activos Digitales</div>
+      <div class="nav-links">
+        <a href="#t1">1. Instagram</a>
+        <a href="#t2">2. LinkedIn</a>
+        <a href="#t3">3. Web IA</a>
+        <a href="#t4">4. GitHub</a>
+        <a href="#t5">5. Dudas</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <span class="badge">● Instructivo · Trabajo Autónomo</span>
+    <h1>Capítulo 1<br>Activos Digitales</h1>
+    <p class="subtitle">Mercadeo y Generación de Valor · Grupo 15 · Aquí tienes el paso a paso completo para que ninguna duda te detenga.</p>
+    <div class="meta-row">
+      <span class="meta-chip"><span class="dot"></span> Estado: Activo</span>
+      <span class="meta-chip">📅 Hoy: viernes 22 mayo 2026</span>
+      <span class="meta-chip">⏰ Entrega: próximo miércoles</span>
+      <span class="meta-chip">⏱️ Tiempo estimado total: 3-4 horas</span>
+    </div>
+  </header>
+
+  <section class="welcome">
+    <div class="welcome-card">
+      <h2>📖 Cómo usar este instructivo</h2>
+      <p>Cada una de las 5 tareas tiene un manual paso a paso debajo. Sigues los números en orden, lees los tips amarillos, las advertencias rosadas y entregas lo que indica el cuadro verde "Entregable". Tu progreso se guarda automáticamente en este navegador.</p>
+      <div class="check-row"><span class="check-icon">1</span><span>Lee la tarea completa antes de empezar a hacerla.</span></div>
+      <div class="check-row"><span class="check-icon">2</span><span>Sigue los pasos en orden. No saltes pasos aunque te parezcan obvios.</span></div>
+      <div class="check-row"><span class="check-icon">3</span><span>Cuando termines, marca el botón verde de "completada" al final de cada tarea.</span></div>
+      <div class="check-row"><span class="check-icon">4</span><span>Si te bloqueas en cualquier paso → al chat del curso. No esperes al miércoles.</span></div>
+    </div>
+  </section>
+
+  <section class="progress-hero">
+    <div class="progress-card">
+      <div class="progress-left">
+        <h2>Tu progreso</h2>
+        <p>Marca cada tarea cuando la termines. Se guarda automáticamente.</p>
+        <button class="reset-btn" id="resetBtn" style="margin-top:14px">↺ Reiniciar progreso</button>
+      </div>
+      <div class="progress-ring">
+        <svg width="120" height="120">
+          <circle class="bg" cx="60" cy="60" r="50"/>
+          <circle class="fg" cx="60" cy="60" r="50" stroke-dasharray="314" stroke-dashoffset="314" id="progressCircle"/>
+        </svg>
+        <div class="label">
+          <span class="num" id="progressNum">0%</span>
+          <span class="txt" id="progressTxt">0 / 5 listas</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tasks-section">
+    <h2 class="section-title">Las 5 tareas · Instructivos</h2>
+    <p class="section-sub">Cada tarea es un activo digital que tu empresa tendrá listo al final de la semana. Sigue el paso a paso.</p>
+
+    <!-- TAREA 1 -->
+    <article class="task-block" data-acc="1" id="t1">
+      <div class="task-header">
+        <div class="task-icon-big">📷</div>
+        <div class="task-head-info">
+          <div class="task-num-pill">TAREA 01</div>
+          <h3>Crear cuenta de Instagram de la empresa</h3>
+          <p class="task-summary">Vas a abrir el primer canal de presencia social de tu empresa. Solo configuración base, sin publicaciones todavía.</p>
+          <div class="task-tags">
+            <span class="tag group">Grupal</span>
+            <span class="tag required">Obligatorio</span>
+            <span class="tag time">⏱ 15-20 min</span>
+            <span class="tag">Red social</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="steps-wrapper">
+        <div class="steps-title">Paso a paso</div>
+
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Acuerden quién es el "administrador" de la cuenta</h4>
+            <p>Una sola persona del grupo se encarga de crear la cuenta. Después comparten las credenciales con el grupo por un canal privado (NO por chat público).</p>
+            <div class="tip"><strong>💡 Tip:</strong> Usen un correo creado para la empresa (o un correo del grupo) — no el correo personal del administrador.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Descarga la app de Instagram o entra a instagram.com</h4>
+            <p>Selecciona "Crear cuenta nueva". Usa el correo del grupo o el correo de la empresa.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Elige el nombre de usuario (handle) de la empresa</h4>
+            <p>El handle es el <code>@nombredelaempresa</code>. Debe ser corto, fácil de recordar y consistente con el nombre del negocio.</p>
+            <div class="example-box">
+              <strong>Ejemplo correcto:</strong><br>
+              Empresa: <em>Imperia Activewear</em><br>
+              Handle: <code>@imperia.activewear</code> o <code>@imperiawear</code>
+            </div>
+            <div class="warn"><strong>⚠ Evita:</strong> nombres con muchos puntos, números aleatorios, guiones bajos innecesarios. Eso luce poco profesional.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Convierte la cuenta en "Cuenta profesional"</h4>
+            <p>En Configuración → "Cambiar a cuenta profesional". Elige <strong>"Empresa"</strong> y selecciona una categoría que describa el negocio.</p>
+            <div class="tip"><strong>💡 ¿Por qué?</strong> Las cuentas profesionales dan acceso a estadísticas, botón de contacto y opciones de promoción. Sin esto, estás operando ciego.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>Completa la información básica del perfil</h4>
+            <p>Esto es lo mínimo que debe quedar listo hoy:</p>
+            <ul>
+              <li><strong>Foto de perfil:</strong> Logo de la empresa (o un placeholder con el nombre si aún no tienen logo).</li>
+              <li><strong>Nombre del perfil:</strong> Nombre comercial completo + lo que hacen. Ej: "Imperia Activewear · Ropa deportiva".</li>
+              <li><strong>Bio (150 caracteres):</strong> Una frase corta que diga qué hacen y para quién.</li>
+              <li><strong>Sitio web:</strong> Por ahora dejen el campo, lo llenamos cuando esté la web (tarea 3).</li>
+              <li><strong>Información de contacto:</strong> Correo del grupo.</li>
+            </ul>
+            <div class="example-box">
+              <strong>Ejemplo de bio:</strong><br>
+              "Ropa deportiva diseñada en Bogotá para mujeres que entrenan en serio. 🇨🇴"
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <h4>Verifica que todo se vea bien y comparte el handle con el grupo</h4>
+            <p>Mira tu perfil desde la vista de visitante. Pregúntate: <em>"si yo fuera un cliente, ¿entendería en 3 segundos qué hace esta empresa?"</em>. Si la respuesta es no, ajusta la bio.</p>
+            <p>Compartan el <code>@handle</code> con el grupo y con el profesor.</p>
+          </div>
+        </div>
+
+        <div class="deliverable">
+          <div class="deliverable-title">✅ Entregable de esta tarea</div>
+          <p>Link al perfil de Instagram de la empresa con foto, bio y categoría configuradas. Cuenta profesional activa.</p>
+        </div>
+
+        <button class="complete-btn" data-id="t1">
+          <span class="box"></span>
+          Marcar Tarea 1 como completada
+        </button>
+      </div>
+    </article>
+
+    <!-- TAREA 2 -->
+    <article class="task-block" data-acc="2" id="t2">
+      <div class="task-header">
+        <div class="task-icon-big">💼</div>
+        <div class="task-head-info">
+          <div class="task-num-pill">TAREA 02</div>
+          <h3>Crear tu cuenta personal en LinkedIn</h3>
+          <p class="task-summary">Cada integrante del grupo abre SU propia cuenta. Es marca personal — tú, no la empresa.</p>
+          <div class="task-tags">
+            <span class="tag individual">Individual</span>
+            <span class="tag required">Obligatorio</span>
+            <span class="tag time">⏱ 20-25 min por persona</span>
+            <span class="tag">Marca personal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="steps-wrapper">
+        <div class="steps-title">Paso a paso</div>
+
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Entra a linkedin.com y regístrate con tu correo personal</h4>
+            <p>Usa tu correo personal (no el de la empresa, no el institucional si no piensas usarlo después).</p>
+            <div class="warn"><strong>⚠ Importante:</strong> Esta cuenta es <strong>tuya</strong>, no es de la empresa. Aquí pones tu nombre, tu foto, tu trayectoria.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Sube una foto profesional</h4>
+            <p>Fondo neutro, cara visible, ropa que usarías en una entrevista. Una selfie clara está bien — no necesitas estudio fotográfico.</p>
+            <div class="tip"><strong>💡 Estándar LinkedIn:</strong> los perfiles con foto reciben 21x más visitas. Sin foto = perfil invisible.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Escribe tu titular (headline) — los 220 caracteres más importantes del perfil</h4>
+            <p>El titular es la frase que aparece bajo tu nombre. No pongas solo "Estudiante en Universidad EAN" — eso lo dice todo el mundo.</p>
+            <div class="example-box">
+              <strong>Mal:</strong> "Estudiante de la EAN"<br><br>
+              <strong>Bien:</strong> "Estudiante de Mercadeo @ Universidad EAN · Apasionado por estrategia digital y comportamiento del consumidor"
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Escribe la sección "Acerca de" (About)</h4>
+            <p>Un párrafo de 3 a 5 líneas en primera persona. Estructura sugerida:</p>
+            <ul>
+              <li>Quién eres (estudiante, semestre, programa).</li>
+              <li>Qué te interesa profesionalmente.</li>
+              <li>Qué estás aprendiendo o haciendo ahora.</li>
+              <li>(Opcional) Cómo te pueden contactar.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>Agrega tu educación</h4>
+            <p>Universidad EAN → tu programa → fecha de inicio. Si tienes otras certificaciones (cursos online, diplomados), agrégalas también.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <h4>Agrega habilidades (Skills)</h4>
+            <p>Mínimo 5 habilidades. Mezcla habilidades técnicas (Excel, Google Analytics, redacción) con habilidades blandas (trabajo en equipo, comunicación).</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">7</div>
+          <div class="step-body">
+            <h4>Personaliza tu URL de LinkedIn</h4>
+            <p>Por defecto LinkedIn te asigna una URL fea con números. Ve a "Editar perfil público y URL" y cámbiala a algo limpio: <code>linkedin.com/in/tu-nombre</code>.</p>
+            <div class="tip"><strong>💡 Tip:</strong> Esta URL es la que vas a poner en tu CV y en cualquier postulación. Hazla limpia.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">8</div>
+          <div class="step-body">
+            <h4>Conecta con tus compañeros del grupo y con el profesor</h4>
+            <p>Mínimo: conecta con los 4-5 integrantes de tu grupo. Es la base de tu red profesional.</p>
+          </div>
+        </div>
+
+        <div class="deliverable">
+          <div class="deliverable-title">✅ Entregable de esta tarea (uno por persona)</div>
+          <p>URL pública de tu perfil de LinkedIn con foto, titular, sección "Acerca de", educación y al menos 5 skills. Lista para compartir.</p>
+        </div>
+
+        <button class="complete-btn" data-id="t2">
+          <span class="box"></span>
+          Marcar Tarea 2 como completada
+        </button>
+      </div>
+    </article>
+
+    <!-- TAREA 3 -->
+    <article class="task-block" data-acc="3" id="t3">
+      <div class="task-header">
+        <div class="task-icon-big">🤖</div>
+        <div class="task-head-info">
+          <div class="task-num-pill">TAREA 03</div>
+          <h3>Generar la primera versión de la web con GLM 4.7</h3>
+          <p class="task-summary">Usar la IA <strong>GLM 4.7</strong> para crear la web v1, alimentándola con las dos sustentaciones y el material del miércoles.</p>
+          <div class="task-tags">
+            <span class="tag group">Grupal</span>
+            <span class="tag required">Obligatorio</span>
+            <span class="tag time">⏱ 60-90 min</span>
+            <span class="tag">IA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="steps-wrapper">
+        <div class="steps-title">Paso a paso</div>
+
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Reúnan TODO el material que van a alimentar a la IA</h4>
+            <p>Antes de abrir la herramienta, junten estos archivos en una carpeta del grupo:</p>
+            <ul>
+              <li>Sustentación 1 (en PDF o texto).</li>
+              <li>Sustentación 2 (en PDF o texto).</li>
+              <li>Material que entregó el profesor el miércoles pasado.</li>
+              <li>Cualquier dato adicional de la empresa: misión, visión, productos, público.</li>
+            </ul>
+            <div class="warn"><strong>⚠ Regla:</strong> "Basura entra, basura sale". Si alimentas la IA con información desordenada o incompleta, la web va a salir mediocre.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Accedan a GLM 4.7</h4>
+            <p>GLM 4.7 (Zhipu AI / ChatGLM) es el modelo que vamos a usar. Pueden acceder desde <code>chatglm.cn</code> o desde la app oficial.</p>
+            <div class="tip"><strong>💡 Si no logran acceder:</strong> Pueden usar otro modelo equivalente (Claude, ChatGPT, Gemini) AVISANDO en el chat. El ejercicio es el mismo.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Escriban un prompt inicial bien estructurado</h4>
+            <p>No le digan "hazme una página web" y ya. Estructuren así:</p>
+            <div class="example-box">
+              <strong>Plantilla de prompt:</strong><br><br>
+              "Necesito que generes el código HTML, CSS y JavaScript en UN SOLO archivo para la página web de la empresa <em>[NOMBRE]</em>.<br><br>
+              CONTEXTO DE LA EMPRESA:<br>
+              - Sector: [sector]<br>
+              - Producto/servicio: [qué venden]<br>
+              - Público objetivo: [a quién le venden]<br>
+              - Propuesta de valor: [diferenciador]<br><br>
+              SECCIONES QUE DEBE TENER:<br>
+              1. Hero con título + subtítulo + botón<br>
+              2. Sobre nosotros<br>
+              3. Productos/servicios<br>
+              4. Contacto<br><br>
+              ESTILO: moderno, limpio, responsive. Paleta: [colores de la marca].<br><br>
+              Entrega el código completo en un solo archivo index.html."
+            </div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Carguen las sustentaciones como contexto</h4>
+            <p>Si GLM permite subir archivos, suban los PDFs. Si no, pegan el texto importante en el chat antes del prompt.</p>
+            <p>Díganle a la IA: <em>"Antes de generar la web, lee este material y extrae los elementos clave de marca, tono y mensaje."</em></p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>Revisen el primer resultado y hagan iteraciones</h4>
+            <p>La primera versión rara vez sale perfecta. Iteren con instrucciones específicas:</p>
+            <ul>
+              <li>"Cambia los colores a azul oscuro y dorado."</li>
+              <li>"El texto del hero debe ser más corto y directo."</li>
+              <li>"Agrega una sección de testimonios."</li>
+              <li>"Hazla responsive para móvil."</li>
+            </ul>
+            <div class="tip"><strong>💡 Regla de las 3 iteraciones:</strong> ningún resultado sale bien al primer intento. Hagan mínimo 3 rondas de ajustes antes de aceptar la versión.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <h4>Guarden el código generado</h4>
+            <p>Copien el HTML completo y guárdenlo como <code>index.html</code> en una carpeta del proyecto. Lo van a subir a GitHub (tarea 4) y vamos a ajustarlo en clase el miércoles.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">7</div>
+          <div class="step-body">
+            <h4>Documenten qué le pidieron a la IA</h4>
+            <p>Guarden el prompt final que usaron. Esto es importante para la sustentación: muestra cómo dirigieron a la IA, no solo lo que la IA produjo.</p>
+          </div>
+        </div>
+
+        <div class="deliverable">
+          <div class="deliverable-title">✅ Entregable de esta tarea</div>
+          <p>Archivo <code>index.html</code> con la primera versión de la web + documento con el prompt usado y las decisiones de iteración. Listos para ajustar el miércoles en clase.</p>
+        </div>
+
+        <button class="complete-btn" data-id="t3">
+          <span class="box"></span>
+          Marcar Tarea 3 como completada
+        </button>
+      </div>
+    </article>
+
+    <!-- TAREA 4 -->
+    <article class="task-block" data-acc="4" id="t4">
+      <div class="task-header">
+        <div class="task-icon-big">🐙</div>
+        <div class="task-head-info">
+          <div class="task-num-pill">TAREA 04</div>
+          <h3>Crear la cuenta de GitHub de la empresa</h3>
+          <p class="task-summary">Una sola cuenta por empresa (no por persona). Aquí va a vivir el código del proyecto.</p>
+          <div class="task-tags">
+            <span class="tag group">Grupal · 1 por empresa</span>
+            <span class="tag required">Obligatorio</span>
+            <span class="tag time">⏱ 15-20 min</span>
+            <span class="tag">Repositorio</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="steps-wrapper">
+        <div class="steps-title">Paso a paso</div>
+
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Acuerden quién administra la cuenta</h4>
+            <p>Igual que en Instagram: una sola persona crea, después comparten credenciales con el grupo por canal privado.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Entren a github.com y hagan "Sign up"</h4>
+            <p>Usen el correo del grupo (mismo correo que usaron para Instagram, así centralizan).</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Elijan el username de la empresa</h4>
+            <p>Que se relacione con el nombre de la empresa. <code>grupo15empresa</code> NO sirve — algo como <code>imperiawear-co</code> o <code>imperia-team</code> sí.</p>
+            <div class="warn"><strong>⚠ Atención:</strong> el username se cambia, pero romperás todos los enlaces que ya hayas compartido. Elijan bien desde el inicio.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Verifiquen el correo y completen el perfil</h4>
+            <p>GitHub manda un correo de verificación. Confírmenlo. Después:</p>
+            <ul>
+              <li>Foto de perfil (logo de la empresa).</li>
+              <li>Bio breve: qué hace la empresa.</li>
+              <li>Ubicación: ciudad.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">5</div>
+          <div class="step-body">
+            <h4>Creen el primer repositorio del proyecto</h4>
+            <p>Click en <strong>"+ New repository"</strong>. Configuren así:</p>
+            <ul>
+              <li><strong>Nombre:</strong> <code>web-empresa</code> o el nombre que decidan.</li>
+              <li><strong>Descripción:</strong> "Página web oficial de [nombre de la empresa]".</li>
+              <li><strong>Visibilidad:</strong> Public (así pueden activar GitHub Pages gratis).</li>
+              <li>Marquen "Add a README file".</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">6</div>
+          <div class="step-body">
+            <h4>Suban el index.html que generaron con la IA (tarea 3)</h4>
+            <p>Pueden subirlo desde la web de GitHub directamente: click en <strong>"Add file → Upload files"</strong>, arrastren el <code>index.html</code> y confirmen.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">7</div>
+          <div class="step-body">
+            <h4>Activen GitHub Pages para tener la web pública</h4>
+            <p>En el repositorio: <strong>Settings → Pages → Source: Deploy from branch → main → /(root) → Save</strong>. En 1-2 minutos tienen la URL pública.</p>
+            <div class="tip"><strong>💡 Resultado:</strong> Tu web estará en <code>https://[username].github.io/[repo]/</code>. Esa URL la pones en la bio de Instagram (cierra el ciclo).</div>
+          </div>
+        </div>
+
+        <div class="deliverable">
+          <div class="deliverable-title">✅ Entregable de esta tarea</div>
+          <p>URL del perfil de GitHub + URL del repositorio con el <code>index.html</code> subido + URL de la web publicada en GitHub Pages.</p>
+        </div>
+
+        <button class="complete-btn" data-id="t4">
+          <span class="box"></span>
+          Marcar Tarea 4 como completada
+        </button>
+      </div>
+    </article>
+
+    <!-- TAREA 5 -->
+    <article class="task-block" data-acc="5" id="t5">
+      <div class="task-header">
+        <div class="task-icon-big">💬</div>
+        <div class="task-head-info">
+          <div class="task-num-pill">TAREA 05</div>
+          <h3>Llevar las dudas al chat desde ya</h3>
+          <p class="task-summary">No es opcional. Es la práctica que hace que las otras 4 tareas salgan bien.</p>
+          <div class="task-tags">
+            <span class="tag">Continuo</span>
+            <span class="tag required">Obligatorio</span>
+            <span class="tag">Comunicación</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="steps-wrapper">
+        <div class="steps-title">Cómo preguntar bien</div>
+
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4>Detecta el bloqueo apenas aparezca</h4>
+            <p>Si llevas 10-15 minutos atascado en algo, ya es momento de preguntar. No esperes una hora.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4>Estructura tu pregunta así</h4>
+            <ul>
+              <li><strong>Contexto:</strong> "Estoy en la tarea 3, generando la web con GLM 4.7..."</li>
+              <li><strong>Qué intentaste:</strong> "Le pasé la sustentación 1 y le pedí X..."</li>
+              <li><strong>Qué pasó:</strong> "Me devolvió un código que no se ve bien en móvil."</li>
+              <li><strong>Qué necesitas:</strong> "¿Cómo le pido que sea responsive?"</li>
+            </ul>
+            <div class="tip"><strong>💡 Regla:</strong> una pregunta bien estructurada se responde rápido. Una pregunta vaga ("no me funciona la IA") obliga a hacer preguntas de vuelta y se demora horas.</div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4>Preferentemente en el chat grupal, no privado</h4>
+            <p>Si tú tienes la duda, otro grupo seguro también. Preguntar en público multiplica el aprendizaje.</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4>Responde dudas de otros si puedes</h4>
+            <p>Si ves que otro grupo pregunta algo que tú ya resolviste — respondan. Enseñar lo que aprendieron es la mejor forma de cementar el aprendizaje.</p>
+          </div>
+        </div>
+
+        <div class="deliverable">
+          <div class="deliverable-title">✅ Compromiso de esta tarea</div>
+          <p>Participar activamente en el chat del curso durante toda la semana. No quedarse en silencio cuando algo no funcione.</p>
+        </div>
+
+        <button class="complete-btn" data-id="t5">
+          <span class="box"></span>
+          Me comprometo a participar activamente en el chat
+        </button>
+      </div>
+    </article>
+
+  </section>
+
+  <section class="timeline-section">
+    <h2 class="section-title">Línea de tiempo recomendada</h2>
+    <p class="section-sub">Si distribuyen el trabajo así, llegan al miércoles relajados y listos para ajustes finos.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">Viernes (hoy) - Sábado</div>
+        <div class="tl-title">Cerrar Tareas 1, 2 y 4 (cuentas)</div>
+        <div class="tl-desc">Instagram + LinkedIn + GitHub. Son las tareas rápidas. Si no tienen las cuentas, las otras dos no avanzan.</div>
+      </div>
+      <div class="tl-item purple">
+        <div class="tl-date">Domingo</div>
+        <div class="tl-title">Preparar el material para la IA</div>
+        <div class="tl-desc">Junten las dos sustentaciones + el material del miércoles. Hagan un solo documento ordenado para alimentar GLM 4.7.</div>
+      </div>
+      <div class="tl-item purple">
+        <div class="tl-date">Lunes</div>
+        <div class="tl-title">Generar la web v1 con GLM 4.7 (Tarea 3)</div>
+        <div class="tl-desc">Mínimo 3 iteraciones. Guarden el prompt final. Suban el HTML a GitHub.</div>
+      </div>
+      <div class="tl-item purple">
+        <div class="tl-date">Martes</div>
+        <div class="tl-title">Revisión interna del grupo</div>
+        <div class="tl-desc">Toda el grupo revisa la web v1. Anotan qué ajustar. Llegan con preguntas concretas al miércoles.</div>
+      </div>
+      <div class="tl-item orange">
+        <div class="tl-date">Miércoles · En clase</div>
+        <div class="tl-title">Ajustes finos con el profesor</div>
+        <div class="tl-desc">El objetivo de la clase es refinar la web, no empezarla desde cero. Si llegan con tarea 3 sin hacer, pierden el día.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section" id="faq">
+    <h2 class="section-title">Preguntas frecuentes</h2>
+    <p class="section-sub">Si tu pregunta no está aquí, escríbela en el chat. No esperes.</p>
+
+    <div class="faq-item">
+      <div class="faq-q">¿La cuenta de Instagram debe ser de la empresa o personal? <span class="arrow">▼</span></div>
+      <div class="faq-a">De la empresa del grupo. No uses tu cuenta personal. Si la empresa ya tiene cuenta real activa, decidan con el grupo si usan esa o crean una de prueba para el ejercicio académico.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">¿Cuántos LinkedIn entregamos por grupo? <span class="arrow">▼</span></div>
+      <div class="faq-a">Uno por cada integrante del grupo. Es trabajo individual dentro del trabajo grupal. Cada quien entrega su URL personal.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">No conozco GLM 4.7, ¿qué es? <span class="arrow">▼</span></div>
+      <div class="faq-a">GLM 4.7 (ChatGLM) es un modelo de IA generativa similar a ChatGPT o Claude, creado por Zhipu AI. Pueden acceder desde chatglm.cn. Si no logran acceder por restricciones de región o de cuenta, avisen en el chat — pueden usar otro modelo equivalente (ChatGPT, Claude, Gemini, DeepSeek) explicando en la entrega cuál usaron.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">¿Una cuenta de GitHub por persona o por grupo? <span class="arrow">▼</span></div>
+      <div class="faq-a">UNA sola cuenta por empresa (por grupo). Si cada integrante ya tiene la suya personal, no importa — para este trabajo se usa la de la empresa.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">¿Qué pasa si no terminamos todo antes del miércoles? <span class="arrow">▼</span></div>
+      <div class="faq-a">Lleguen con lo más avanzado posible. La clase del miércoles está pensada para ajustar la web, no para empezarla. Si llegan sin la tarea 3 hecha, pierden el día de ajustes finos. Avisen en el chat si tienen un bloqueo serio antes del martes.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">¿Cómo nos repartimos el trabajo dentro del grupo? <span class="arrow">▼</span></div>
+      <div class="faq-a">Sugerencia: una persona administra Instagram, otra administra GitHub, una persona lidera el prompt de GLM 4.7, otra documenta el proceso. La tarea 2 (LinkedIn) la hace cada uno por su cuenta.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">¿Las preguntas van por chat privado o grupal? <span class="arrow">▼</span></div>
+      <div class="faq-a">Grupal preferiblemente — si tú tienes la duda, otro grupo seguro también. Aprendemos colectivamente. Reserven el chat privado para temas individuales (calificación, situación personal).</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">¿Qué tan elaborada debe estar la web v1? <span class="arrow">▼</span></div>
+      <div class="faq-a">Lo suficiente para que se entienda qué hace la empresa, quién es, qué ofrece y cómo contactarla. No tiene que estar perfecta — es la "primera versión". Los ajustes finos los hacemos en clase.</div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-box">
+      <h2>¿Te quedó una duda?</h2>
+      <p>No esperes al miércoles. Llévala al chat del curso ahora mismo. Mientras antes preguntes, más avance vas a tener esta semana.</p>
+      <button class="cta-btn" onclick="alert('💬 Recuerda: las preguntas van directamente al chat del curso. ¡Pregunta sin miedo y ayuda a otros cuando puedas!')">
+        💬 Ir al chat del curso
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    <p>Universidad EAN · <strong>Mercadeo y Generación de Valor</strong> · Grupo 15 · Capítulo 1 - Activos Digitales</p>
+    <p style="margin-top:6px; opacity:0.6">Tu progreso se guarda solo en este dispositivo. No requiere login ni envía datos.</p>
+  </footer>
+</div>
+
+<script>
+const STORAGE_KEY = 'g15_cap1_progress_v2';
+const tasks = ['t1','t2','t3','t4','t5'];
+
+function loadProgress() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+  catch(e) { return {}; }
+}
+function saveProgress(p) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(p));
+}
+function renderProgress() {
+  const p = loadProgress();
+  let done = 0;
+  tasks.forEach(id => {
+    const btn = document.querySelector(`[data-id="${id}"]`);
+    const block = btn.closest('.task-block');
+    if (p[id]) {
+      btn.classList.add('checked');
+      block.classList.add('done');
+      done++;
+    } else {
+      btn.classList.remove('checked');
+      block.classList.remove('done');
+    }
+  });
+  const pct = Math.round((done / tasks.length) * 100);
+  document.getElementById('progressNum').textContent = pct + '%';
+  document.getElementById('progressTxt').textContent = `${done} / ${tasks.length} listas`;
+  const circ = 2 * Math.PI * 50;
+  document.getElementById('progressCircle').style.strokeDashoffset = circ - (circ * pct / 100);
+}
+
+document.querySelectorAll('.complete-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.dataset.id;
+    const p = loadProgress();
+    p[id] = !p[id];
+    saveProgress(p);
+    renderProgress();
+  });
+});
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if (confirm('¿Reiniciar todo tu progreso? Esta acción no se puede deshacer.')) {
+    localStorage.removeItem(STORAGE_KEY);
+    renderProgress();
+  }
+});
+
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    item.classList.toggle('open');
+  });
+});
+
+renderProgress();
+</script>
+</body>
+</html>
